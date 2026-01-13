@@ -25,8 +25,6 @@ WORKDIR /app
 
 COPY --from=build-stage /app /app
 
-COPY .container/appconfig.yaml /app/appconfig.yaml
-
 USER nonroot:nonroot
 
 ENTRYPOINT ["/app/arcane-stream-mock"]
