@@ -37,6 +37,8 @@ type TestsStreamDefinitionSpecApplyConfiguration struct {
 	JobTemplateRef *corev1.ObjectReference `json:"jobTemplateRef,omitempty"`
 	// BackfillJobTemplateRef represents a reference to the job template.
 	BackfillJobTemplateRef *corev1.ObjectReference `json:"backfillJobTemplateRef,omitempty"`
+	// RunDuration represents the duration for which the stream should run.
+	RunDuration *string `json:"runDuration,omitempty"`
 }
 
 // TestsStreamDefinitionSpecApplyConfiguration constructs a declarative configuration of the TestsStreamDefinitionSpec type for use with
@@ -82,5 +84,13 @@ func (b *TestsStreamDefinitionSpecApplyConfiguration) WithJobTemplateRef(value c
 // If called multiple times, the BackfillJobTemplateRef field is set to the value of the last call.
 func (b *TestsStreamDefinitionSpecApplyConfiguration) WithBackfillJobTemplateRef(value corev1.ObjectReference) *TestsStreamDefinitionSpecApplyConfiguration {
 	b.BackfillJobTemplateRef = &value
+	return b
+}
+
+// WithRunDuration sets the RunDuration field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the RunDuration field is set to the value of the last call.
+func (b *TestsStreamDefinitionSpecApplyConfiguration) WithRunDuration(value string) *TestsStreamDefinitionSpecApplyConfiguration {
+	b.RunDuration = &value
 	return b
 }
