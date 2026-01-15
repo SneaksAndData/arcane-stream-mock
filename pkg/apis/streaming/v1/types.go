@@ -1,5 +1,3 @@
-//go:build test
-
 package v1
 
 import (
@@ -23,6 +21,10 @@ type TestsStreamDefinitionSpec struct {
 
 	// BackfillJobTemplateRef represents a reference to the job template.
 	BackfillJobTemplateRef v1.ObjectReference `json:"backfillJobTemplateRef"`
+
+	// RunDuration represents the duration for which the stream should run.
+	// +kubebuilder:default="15s"
+	RunDuration string `json:"runDuration"`
 }
 
 type TestStreamDefinitionStatus struct {

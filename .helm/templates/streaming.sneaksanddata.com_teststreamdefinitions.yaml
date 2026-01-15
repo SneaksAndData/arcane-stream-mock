@@ -131,6 +131,11 @@ spec:
                     type: string
                 type: object
                 x-kubernetes-map-type: atomic
+              runDuration:
+                default: 15s
+                description: RunDuration represents the duration for which the stream
+                  should run.
+                type: string
               source:
                 description: Source represents the source of the stream.
                 type: string
@@ -141,6 +146,7 @@ spec:
             - backfillJobTemplateRef
             - destination
             - jobTemplateRef
+            - runDuration
             - source
             - suspended
             type: object
