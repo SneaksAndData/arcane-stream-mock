@@ -1,0 +1,16 @@
+apiVersion: streaming.sneaksanddata.com/v1
+kind: StreamClass
+metadata:
+  name: {{ template "app.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "streamclass.labels" $ | nindent 4 }}
+  {{- if .Values.additionalAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  apiGroupRef: streaming.sneaksanddata.com
+  kindRef: TestStreamDefinition
+  apiVersion: v1beta1
+  pluralName: teststreamdefinitions

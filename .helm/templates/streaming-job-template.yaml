@@ -1,0 +1,71 @@
+{{- if and .Values.jobTemplateSettings.create -}}
+apiVersion: streaming.sneaksanddata.com/v1
+kind: StreamingJobTemplate
+metadata:
+  name: {{ include "app.name" $ }}
+spec:
+  apiVersion: batch/v1
+  kind: Job
+  spec:
+    {{- with .Values.imagePullSecrets }}
+    imagePullSecrets:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}
+    backoffLimit: {{ .Values.jobTemplateSettings.backoffLimit }}
+    ttlSecondsAfterFinished: 1
+    template:
+      spec:
+        containers:
+          - name: arcane-stream
+            image: "{{ include "app.image" . }}"
+            imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+            env:
+              - name: ASPNETCORE_ENVIRONMENT
+                value: {{ .Values.environment }}
+              - name: APPLICATION_VERSION
+                value: "{{ (default (printf "v%s" .Chart.AppVersion) .Values.image.tag) }}"
+            {{- with .Values.jobTemplateSettings.extraEnv }}
+              {{- toYaml . | nindent 16 }}
+            {{- end }}
+            {{- if .Values.jobTemplateSettings.extraEnvFrom }}
+            envFrom:
+              {{- with .Values.jobTemplateSettings.extraEnvFrom }}
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+            {{- end }}
+            {{- if .Values.jobTemplateSettings.extraVolumeMounts }}
+            volumeMounts:
+              {{- with .Values.jobTemplateSettings.extraVolumeMounts }}
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+            {{- end }}
+            {{- with .Values.jobTemplateSettings.resources }}
+            resources:
+              {{- toYaml . | nindent 16 }}
+            {{- end }}
+        restartPolicy: Never
+        {{- if .Values.jobTemplateSettings.extraVolumes }}
+        volumes:
+            {{- with .Values.jobTemplateSettings.extraVolumes }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+        {{- end }}
+        serviceAccountName: {{ include "app.serviceAccountName" . }}
+        {{- with .Values.jobTemplateSettings.tolerations }}
+        tolerations:
+          {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.jobTemplateSettings.affinity }}
+        affinity:
+          {{- toYaml . | nindent 12 }}
+        {{- end }}
+    podFailurePolicy:
+      rules:
+        - action: Ignore
+          onExitCodes:
+            operator: In
+            {{- with .Values.jobTemplateSettings.podFailurePolicySettings.retryOnExitCodes }}
+            values:
+              {{- toYaml . | nindent 16 }}
+            {{- end }}
+{{- end }}
