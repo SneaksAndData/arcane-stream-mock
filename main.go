@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand/v2"
 	"os"
 	"time"
 
@@ -31,6 +32,15 @@ func main() {
 	if err != nil {
 		fmt.Println("Failed to parse RunDuration:", err)
 		os.Exit(1)
+	}
+
+	// Generate random duration between 0 and runDuration
+	randomFailureDuration := time.Duration(rand.Int64N(int64(duration)))
+
+	if spec.ShouldFail {
+		fmt.Printf("Simulating failure after %v\n", randomFailureDuration)
+		time.Sleep(randomFailureDuration)
+		panic("Simulated failure as per ShouldFail=true")
 	}
 
 	fmt.Printf("Running stream for %v\n", duration)

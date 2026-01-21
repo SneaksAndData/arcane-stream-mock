@@ -14,7 +14,23 @@ spec:
     singular: teststreamdefinition
   scope: Namespaced
   versions:
-  - name: v1
+  - additionalPrinterColumns:
+    - jsonPath: .spec.source
+      name: Source
+      type: string
+    - jsonPath: .spec.destination
+      name: Destination
+      type: string
+    - jsonPath: .spec.runDuration
+      name: Run Duration
+      type: string
+    - jsonPath: .spec.shouldFail
+      name: Should Fail
+      type: string
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1
     schema:
       openAPIV3Schema:
         description: TestStreamDefinition is a mock implementation of the StreamDefinition
@@ -136,6 +152,11 @@ spec:
                 description: RunDuration represents the duration for which the stream
                   should run.
                 type: string
+              shouldFail:
+                default: false
+                description: ShouldFail indicates whether the stream should simulate
+                  a failure.
+                type: boolean
               source:
                 description: Source represents the source of the stream.
                 type: string
@@ -147,6 +168,7 @@ spec:
             - destination
             - jobTemplateRef
             - runDuration
+            - shouldFail
             - source
             - suspended
             type: object

@@ -25,6 +25,10 @@ type TestsStreamDefinitionSpec struct {
 	// RunDuration represents the duration for which the stream should run.
 	// +kubebuilder:default="15s"
 	RunDuration string `json:"runDuration"`
+
+	// ShouldFail indicates whether the stream should simulate a failure.
+	// +kubebuilder:default=false
+	ShouldFail bool `json:"shouldFail"`
 }
 
 type TestStreamDefinitionStatus struct {
@@ -42,6 +46,11 @@ type TestStreamDefinitionStatus struct {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Source",type=string,JSONPath=`.spec.source`
+// +kubebuilder:printcolumn:name="Destination",type=string,JSONPath=`.spec.destination`
+// +kubebuilder:printcolumn:name="Run Duration",type=string,JSONPath=`.spec.runDuration`
+// +kubebuilder:printcolumn:name="Should Fail",type=string,JSONPath=`.spec.shouldFail`
+// +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 // +kubebuilder:object:root=true
 type TestStreamDefinition struct {
 	metav1.TypeMeta   `json:",inline"`
