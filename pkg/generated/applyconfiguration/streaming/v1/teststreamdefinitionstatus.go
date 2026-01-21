@@ -18,6 +18,10 @@ limitations under the License.
 
 package v1
 
+import (
+	metav1 "k8s.io/client-go/applyconfigurations/meta/v1"
+)
+
 // TestStreamDefinitionStatusApplyConfiguration represents a declarative configuration of the TestStreamDefinitionStatus type for use
 // with apply.
 type TestStreamDefinitionStatusApplyConfiguration struct {
@@ -25,6 +29,8 @@ type TestStreamDefinitionStatusApplyConfiguration struct {
 	Phase *string `json:"phase,omitempty"`
 	// ConfigurationHash represents the hash of the current configuration.
 	ConfigurationHash *string `json:"configurationHash,omitempty"`
+	// Conditions represent the current conditions of the stream.
+	Conditions []metav1.ConditionApplyConfiguration `json:"conditions,omitempty"`
 }
 
 // TestStreamDefinitionStatusApplyConfiguration constructs a declarative configuration of the TestStreamDefinitionStatus type for use with
@@ -46,5 +52,18 @@ func (b *TestStreamDefinitionStatusApplyConfiguration) WithPhase(value string) *
 // If called multiple times, the ConfigurationHash field is set to the value of the last call.
 func (b *TestStreamDefinitionStatusApplyConfiguration) WithConfigurationHash(value string) *TestStreamDefinitionStatusApplyConfiguration {
 	b.ConfigurationHash = &value
+	return b
+}
+
+// WithConditions adds the given value to the Conditions field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the Conditions field.
+func (b *TestStreamDefinitionStatusApplyConfiguration) WithConditions(values ...*metav1.ConditionApplyConfiguration) *TestStreamDefinitionStatusApplyConfiguration {
+	for i := range values {
+		if values[i] == nil {
+			panic("nil value passed to WithConditions")
+		}
+		b.Conditions = append(b.Conditions, *values[i])
+	}
 	return b
 }
