@@ -33,6 +33,9 @@ type TestStreamDefinitionStatus struct {
 
 	// ConfigurationHash represents the hash of the current configuration.
 	ConfigurationHash string `json:"configurationHash"`
+
+	// Conditions represent the current conditions of the stream.
+	Conditions []metav1.Condition `json:"conditions"`
 }
 
 // TestStreamDefinition is a mock implementation of the StreamDefinition for testing purposes.
