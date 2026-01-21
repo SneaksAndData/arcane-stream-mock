@@ -153,7 +153,7 @@ spec:
                   should run.
                 type: string
               shouldFail:
-                default: "false"
+                default: false
                 description: ShouldFail indicates whether the stream should simulate
                   a failure.
                 type: boolean

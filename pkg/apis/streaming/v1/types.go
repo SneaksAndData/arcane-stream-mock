@@ -27,7 +27,7 @@ type TestsStreamDefinitionSpec struct {
 	RunDuration string `json:"runDuration"`
 
 	// ShouldFail indicates whether the stream should simulate a failure.
-	// +kubebuilder:default="false"
+	// +kubebuilder:default=false
 	ShouldFail bool `json:"shouldFail"`
 }
 
