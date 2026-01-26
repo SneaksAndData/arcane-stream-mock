@@ -15,7 +15,7 @@ metadata:
   {{- end }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "app.serviceAccountName" . }}
+    name: {{ .Values.rbac.clusterRole.testStreamEditor.operatorServiceAccountName | default "arcane-operator" }}
     namespace: {{ .Release.Namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
