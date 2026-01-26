@@ -21,13 +21,13 @@ fullnameOverride: ""
 
 # Service account configuration
 serviceAccount:
-  
+
   # Specifies whether a service account should be created
   create: true
-  
+
   # Annotations to add to the service account
   annotations: {}
-  
+
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
@@ -50,6 +50,10 @@ rbac:
       additionalAnnotations: {}
       create: true
       nameOverride: ""
+
+      # Allows the service account to view the test stream resources.
+      # This field should be set to the name of the service account created for the operator.
+      operatorServiceAccountName: ""
     
     # Allows the service account to update custom resources
     testStreamEditor:
@@ -57,14 +61,11 @@ rbac:
       additionalAnnotations: {}
       create: true
       nameOverride: ""
-  
-    # Allows the streaming plugin to report schema mismatch status for the Operator
-    jobEditor:
-      additionalLabels: {}
-      additionalAnnotations: {}
-      create: true
-      nameOverride: ""
-  
+
+      # Allows the service account to view the test stream resources.
+      # This field should be set to the name of the service account created for the operator.
+      operatorServiceAccountName: ""
+
   # This parameter determines whether role binding resources need to be created.
   # If you have any roles in your configuration set to 'true', then this parameter for creating role binding resources
   # should also be set to 'true'.
