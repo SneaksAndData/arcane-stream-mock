@@ -15,4 +15,4 @@ spec:
   apiVersion: v1
   pluralName: teststreamdefinitions
   secretRefs:
-    - name: testSecretRef
+    - testSecretRef
