@@ -29,6 +29,9 @@ type TestsStreamDefinitionSpec struct {
 	// ShouldFail indicates whether the stream should simulate a failure.
 	// +kubebuilder:default=false
 	ShouldFail bool `json:"shouldFail"`
+
+	// TestSecretRef represents a reference to a secret for testing purposes.
+	TestSecretRef *v1.SecretEnvSource `json:"testSecretRef,omitempty"`
 }
 
 type TestStreamDefinitionStatus struct {
