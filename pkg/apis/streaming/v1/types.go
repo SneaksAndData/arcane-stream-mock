@@ -31,7 +31,7 @@ type TestsStreamDefinitionSpec struct {
 	ShouldFail bool `json:"shouldFail"`
 
 	// TestSecretRef represents a reference to a secret for testing purposes.
-	TestSecretRef *v1.SecretEnvSource `json:"testSecretRef,omitempty"`
+	TestSecretRef *v1.LocalObjectReference `json:"testSecretRef,omitempty"`
 }
 
 type TestStreamDefinitionStatus struct {
