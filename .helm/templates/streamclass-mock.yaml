@@ -14,3 +14,5 @@ spec:
   kindRef: TestStreamDefinition
   apiVersion: v1
   pluralName: teststreamdefinitions
+  secretRefs:
+    - testSecretRef

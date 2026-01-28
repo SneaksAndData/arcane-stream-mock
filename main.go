@@ -27,6 +27,13 @@ func main() {
 
 	fmt.Printf("Deserialized STREAMCONTEXT__SPEC: %+v\n", spec)
 
+	secretEnv := os.Getenv("TEST_SECRET")
+	if secretEnv != "" {
+		fmt.Printf("Retrieved secret from TEST_SECRET: %s\n", secretEnv)
+	} else {
+		panic("TEST_SECRET environment variable is not defined")
+	}
+
 	// Parse the run duration
 	duration, err := time.ParseDuration(spec.RunDuration)
 	if err != nil {
