@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/SneaksAndData/arcane-stream-mock/pkg/signals"
 	"math/rand/v2"
 	"os"
 	"time"
@@ -18,6 +19,7 @@ func main() {
 		fmt.Println("Error: STREAMCONTEXT__SPEC environment variable is not defined")
 		os.Exit(1)
 	}
+
 	var spec v1.TestsStreamDefinitionSpec
 	err := json.Unmarshal([]byte(specEnv), &spec)
 	if err != nil {
@@ -51,6 +53,20 @@ func main() {
 	}
 
 	fmt.Printf("Running stream for %v\n", duration)
-	time.Sleep(duration)
-	fmt.Println("Stream run completed")
+
+	ctx := signals.SetupSignalHandler()
+	ticker := time.NewTicker(duration)
+	defer ticker.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println("Stream run interrupted by context cancellation")
+			os.Exit(0)
+		case <-ticker.C:
+			fmt.Println("Stream run completed")
+			os.Exit(0)
+		}
+	}
+
 }
