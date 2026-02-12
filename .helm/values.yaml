@@ -94,6 +94,9 @@ jobTemplateSettings:
   
   # Job backoff limit
   backoffLimit: 3
+
+  # Time to live for finished jobs in seconds. After this time, the job and its pods will be automatically deleted.
+  ttlSecondsAfterFinished: 30
   
   # Additional labels for the streaming jobs and pods
   additionalLabels: {}
