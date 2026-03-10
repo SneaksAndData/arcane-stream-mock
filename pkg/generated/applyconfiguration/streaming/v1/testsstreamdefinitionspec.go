@@ -33,12 +33,14 @@ type TestsStreamDefinitionSpecApplyConfiguration struct {
 	Destination *string `json:"destination,omitempty"`
 	// Suspended indicates whether the stream is suspended.
 	Suspended *bool `json:"suspended,omitempty"`
-	// JobTemplateRef represents a reference to the job template.
-	JobTemplateRef *corev1.ObjectReference `json:"jobTemplateRef,omitempty"`
-	// BackfillJobTemplateRef represents a reference to the job template.
-	BackfillJobTemplateRef *corev1.ObjectReference `json:"backfillJobTemplateRef,omitempty"`
 	// RunDuration represents the duration for which the stream should run.
 	RunDuration *string `json:"runDuration,omitempty"`
+	// ShouldFail indicates whether the stream should simulate a failure.
+	ShouldFail *bool `json:"shouldFail,omitempty"`
+	// TestSecretRef represents a reference to a secret for testing purposes.
+	TestSecretRef *corev1.LocalObjectReference `json:"testSecretRef,omitempty"`
+	// ExecutionSettings represents the execution settings for the stream.
+	ExecutionSettings *ExecutionSettingsApplyConfiguration `json:"execution,omitempty"`
 }
 
 // TestsStreamDefinitionSpecApplyConfiguration constructs a declarative configuration of the TestsStreamDefinitionSpec type for use with
@@ -71,26 +73,34 @@ func (b *TestsStreamDefinitionSpecApplyConfiguration) WithSuspended(value bool) 
 	return b
 }
 
-// WithJobTemplateRef sets the JobTemplateRef field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the JobTemplateRef field is set to the value of the last call.
-func (b *TestsStreamDefinitionSpecApplyConfiguration) WithJobTemplateRef(value corev1.ObjectReference) *TestsStreamDefinitionSpecApplyConfiguration {
-	b.JobTemplateRef = &value
-	return b
-}
-
-// WithBackfillJobTemplateRef sets the BackfillJobTemplateRef field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the BackfillJobTemplateRef field is set to the value of the last call.
-func (b *TestsStreamDefinitionSpecApplyConfiguration) WithBackfillJobTemplateRef(value corev1.ObjectReference) *TestsStreamDefinitionSpecApplyConfiguration {
-	b.BackfillJobTemplateRef = &value
-	return b
-}
-
 // WithRunDuration sets the RunDuration field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the RunDuration field is set to the value of the last call.
 func (b *TestsStreamDefinitionSpecApplyConfiguration) WithRunDuration(value string) *TestsStreamDefinitionSpecApplyConfiguration {
 	b.RunDuration = &value
+	return b
+}
+
+// WithShouldFail sets the ShouldFail field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the ShouldFail field is set to the value of the last call.
+func (b *TestsStreamDefinitionSpecApplyConfiguration) WithShouldFail(value bool) *TestsStreamDefinitionSpecApplyConfiguration {
+	b.ShouldFail = &value
+	return b
+}
+
+// WithTestSecretRef sets the TestSecretRef field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the TestSecretRef field is set to the value of the last call.
+func (b *TestsStreamDefinitionSpecApplyConfiguration) WithTestSecretRef(value corev1.LocalObjectReference) *TestsStreamDefinitionSpecApplyConfiguration {
+	b.TestSecretRef = &value
+	return b
+}
+
+// WithExecutionSettings sets the ExecutionSettings field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the ExecutionSettings field is set to the value of the last call.
+func (b *TestsStreamDefinitionSpecApplyConfiguration) WithExecutionSettings(value *ExecutionSettingsApplyConfiguration) *TestsStreamDefinitionSpecApplyConfiguration {
+	b.ExecutionSettings = value
 	return b
 }

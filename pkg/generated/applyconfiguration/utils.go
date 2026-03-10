@@ -32,6 +32,14 @@ import (
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
 	// Group=streaming.sneaksanddata.com, Version=v1
+	case v1.SchemeGroupVersion.WithKind("BatchJobBackend"):
+		return &streamingv1.BatchJobBackendApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("CronJobBackend"):
+		return &streamingv1.CronJobBackendApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("ExecutionSettings"):
+		return &streamingv1.ExecutionSettingsApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("StreamingBackend"):
+		return &streamingv1.StreamingBackendApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("TestsStreamDefinitionSpec"):
 		return &streamingv1.TestsStreamDefinitionSpecApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("TestStreamDefinition"):

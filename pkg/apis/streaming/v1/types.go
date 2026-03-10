@@ -5,6 +5,51 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+// CronJobBackend represents the backend configuration for batch processing, including the cron schedule and a reference
+// to the job template.
+type CronJobBackend struct {
+
+	// Schedule represents the cron schedule for batch processing.
+	Schedule string `json:"schedule"`
+
+	// JobTemplateRef represents a reference to the job template.
+	JobTemplateRef v1.ObjectReference `json:"jobTemplateRef"`
+}
+
+// BatchJobBackend represents the backend configuration for real-time streaming, including the change capture interval
+// and a reference to the job template.
+type BatchJobBackend struct {
+	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
+	ChangeCaptureInterval string `json:"changeCaptureInterval"`
+
+	// JobTemplateRef represents a reference to the job template.
+	JobTemplateRef v1.ObjectReference `json:"jobTemplateRef"`
+}
+
+// StreamingBackend represents the backend configuration for streaming, including both real-time and batch processing options.
+type StreamingBackend struct {
+	// BatchJobBackend represents the backend configuration for real-time streaming.
+	BatchJobBackend *BatchJobBackend `json:"realtime,omitempty"`
+
+	// CronJobBackend represents the backend configuration for batch processing.
+	CronJobBackend *CronJobBackend `json:"batch,omitempty"`
+}
+
+// ExecutionSettings represents the execution settings for a stream, including suspension status and backend configuration.
+type ExecutionSettings struct {
+	// APIVersion represents the API version of the execution settings.
+	APIVersion string `json:"apiVersion"`
+
+	// Suspended indicates whether the stream is suspended.
+	Suspended bool `json:"suspended"`
+
+	// BackfillJobTemplateRef represents a reference to the job template.
+	BackfillJobTemplateRef v1.ObjectReference `json:"backfillJobTemplateRef"`
+
+	// StreamingBackend represents the backend configuration for streaming.
+	StreamingBackend StreamingBackend `json:"streamingBackend"`
+}
+
 // TestsStreamDefinitionSpec is a mock implementation of the StreamDefinitionSpec for testing purposes.
 type TestsStreamDefinitionSpec struct {
 	// Source represents the source of the stream.
@@ -16,12 +61,6 @@ type TestsStreamDefinitionSpec struct {
 	// Suspended indicates whether the stream is suspended.
 	Suspended bool `json:"suspended"`
 
-	// JobTemplateRef represents a reference to the job template.
-	JobTemplateRef v1.ObjectReference `json:"jobTemplateRef"`
-
-	// BackfillJobTemplateRef represents a reference to the job template.
-	BackfillJobTemplateRef v1.ObjectReference `json:"backfillJobTemplateRef"`
-
 	// RunDuration represents the duration for which the stream should run.
 	// +kubebuilder:default="15s"
 	RunDuration string `json:"runDuration"`
@@ -32,6 +71,9 @@ type TestsStreamDefinitionSpec struct {
 
 	// TestSecretRef represents a reference to a secret for testing purposes.
 	TestSecretRef *v1.LocalObjectReference `json:"testSecretRef,omitempty"`
+
+	// ExecutionSettings represents the execution settings for the stream.
+	ExecutionSettings ExecutionSettings `json:"execution"`
 }
 
 type TestStreamDefinitionStatus struct {
