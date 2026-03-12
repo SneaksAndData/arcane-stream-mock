@@ -97,6 +97,7 @@ type TestStreamDefinitionStatus struct {
 // +kubebuilder:printcolumn:name="Should Fail",type=string,JSONPath=`.spec.shouldFail`
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 // +kubebuilder:object:root=true
+// +kubebuilder:storageversion
 type TestStreamDefinition struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
