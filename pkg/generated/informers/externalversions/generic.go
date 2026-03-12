@@ -22,6 +22,7 @@ import (
 	fmt "fmt"
 
 	v1 "github.com/SneaksAndData/arcane-stream-mock/pkg/apis/streaming/v1"
+	v2 "github.com/SneaksAndData/arcane-stream-mock/pkg/apis/streaming/v2"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -55,6 +56,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=streaming.sneaksanddata.com, Version=v1
 	case v1.SchemeGroupVersion.WithResource("teststreamdefinitions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Streaming().V1().TestStreamDefinitions().Informer()}, nil
+
+		// Group=streaming.sneaksanddata.com, Version=v2
+	case v2.SchemeGroupVersion.WithResource("teststreamdefinitions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Streaming().V2().TestStreamDefinitions().Informer()}, nil
 
 	}
 

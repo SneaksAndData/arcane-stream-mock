@@ -23,6 +23,8 @@ import (
 	clientset "github.com/SneaksAndData/arcane-stream-mock/pkg/generated/clientset/versioned"
 	streamingv1 "github.com/SneaksAndData/arcane-stream-mock/pkg/generated/clientset/versioned/typed/streaming/v1"
 	fakestreamingv1 "github.com/SneaksAndData/arcane-stream-mock/pkg/generated/clientset/versioned/typed/streaming/v1/fake"
+	streamingv2 "github.com/SneaksAndData/arcane-stream-mock/pkg/generated/clientset/versioned/typed/streaming/v2"
+	fakestreamingv2 "github.com/SneaksAndData/arcane-stream-mock/pkg/generated/clientset/versioned/typed/streaming/v2/fake"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -139,4 +141,9 @@ var (
 // StreamingV1 retrieves the StreamingV1Client
 func (c *Clientset) StreamingV1() streamingv1.StreamingV1Interface {
 	return &fakestreamingv1.FakeStreamingV1{Fake: &c.Fake}
+}
+
+// StreamingV2 retrieves the StreamingV2Client
+func (c *Clientset) StreamingV2() streamingv2.StreamingV2Interface {
+	return &fakestreamingv2.FakeStreamingV2{Fake: &c.Fake}
 }
