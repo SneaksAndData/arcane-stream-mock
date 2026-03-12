@@ -87,7 +87,7 @@ type TestStreamDefinitionStatus struct {
 	Conditions []metav1.Condition `json:"conditions"`
 }
 
-// TestStreamDefinition is a mock implementation of the StreamDefinition for testing purposes.
+// TestStreamDefinitionV2 is a mock implementation of the StreamDefinition for testing purposes.
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:subresource:status
@@ -98,7 +98,7 @@ type TestStreamDefinitionStatus struct {
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 // +kubebuilder:object:root=true
 // +kubebuilder:storageversion
-type TestStreamDefinition struct {
+type TestStreamDefinitionV2 struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
@@ -106,10 +106,10 @@ type TestStreamDefinition struct {
 	Status TestStreamDefinitionStatus `json:"status,omitempty"`
 }
 
-// TestStreamDefinitionList contains a list of TestStreamDefinition resources
+// TestStreamDefinitionV2List contains a list of TestStreamDefinition resources
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-type TestStreamDefinitionList struct {
+type TestStreamDefinitionV2List struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []TestStreamDefinition `json:"items"`
+	Items           []TestStreamDefinitionV2 `json:"items"`
 }

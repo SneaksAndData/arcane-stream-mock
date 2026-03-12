@@ -28,7 +28,7 @@ import (
 
 type StreamingV2Interface interface {
 	RESTClient() rest.Interface
-	TestStreamDefinitionsGetter
+	TestStreamDefinitionV2sGetter
 }
 
 // StreamingV2Client is used to interact with features provided by the streaming.sneaksanddata.com group.
@@ -36,8 +36,8 @@ type StreamingV2Client struct {
 	restClient rest.Interface
 }
 
-func (c *StreamingV2Client) TestStreamDefinitions(namespace string) TestStreamDefinitionInterface {
-	return newTestStreamDefinitions(c, namespace)
+func (c *StreamingV2Client) TestStreamDefinitionV2s(namespace string) TestStreamDefinitionV2Interface {
+	return newTestStreamDefinitionV2s(c, namespace)
 }
 
 // NewForConfig creates a new StreamingV2Client for the given config.

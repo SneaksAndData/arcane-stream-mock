@@ -58,8 +58,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Streaming().V1().TestStreamDefinitions().Informer()}, nil
 
 		// Group=streaming.sneaksanddata.com, Version=v2
-	case v2.SchemeGroupVersion.WithResource("teststreamdefinitions"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Streaming().V2().TestStreamDefinitions().Informer()}, nil
+	case v2.SchemeGroupVersion.WithResource("teststreamdefinitionv2s"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Streaming().V2().TestStreamDefinitionV2s().Informer()}, nil
 
 	}
 

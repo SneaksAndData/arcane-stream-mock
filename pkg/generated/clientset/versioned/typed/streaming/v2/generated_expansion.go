@@ -18,4 +18,4 @@ limitations under the License.
 
 package v2
 
-type TestStreamDefinitionExpansion interface{}
+type TestStreamDefinitionV2Expansion interface{}

@@ -18,10 +18,10 @@ limitations under the License.
 
 package v2
 
-// TestStreamDefinitionListerExpansion allows custom methods to be added to
-// TestStreamDefinitionLister.
-type TestStreamDefinitionListerExpansion interface{}
+// TestStreamDefinitionV2ListerExpansion allows custom methods to be added to
+// TestStreamDefinitionV2Lister.
+type TestStreamDefinitionV2ListerExpansion interface{}
 
-// TestStreamDefinitionNamespaceListerExpansion allows custom methods to be added to
-// TestStreamDefinitionNamespaceLister.
-type TestStreamDefinitionNamespaceListerExpansion interface{}
+// TestStreamDefinitionV2NamespaceListerExpansion allows custom methods to be added to
+// TestStreamDefinitionV2NamespaceLister.
+type TestStreamDefinitionV2NamespaceListerExpansion interface{}

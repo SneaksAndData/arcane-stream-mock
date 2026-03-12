@@ -25,26 +25,26 @@ import (
 	gentype "k8s.io/client-go/gentype"
 )
 
-// fakeTestStreamDefinitions implements TestStreamDefinitionInterface
-type fakeTestStreamDefinitions struct {
-	*gentype.FakeClientWithListAndApply[*v2.TestStreamDefinition, *v2.TestStreamDefinitionList, *streamingv2.TestStreamDefinitionApplyConfiguration]
+// fakeTestStreamDefinitionV2s implements TestStreamDefinitionV2Interface
+type fakeTestStreamDefinitionV2s struct {
+	*gentype.FakeClientWithListAndApply[*v2.TestStreamDefinitionV2, *v2.TestStreamDefinitionV2List, *streamingv2.TestStreamDefinitionV2ApplyConfiguration]
 	Fake *FakeStreamingV2
 }
 
-func newFakeTestStreamDefinitions(fake *FakeStreamingV2, namespace string) typedstreamingv2.TestStreamDefinitionInterface {
-	return &fakeTestStreamDefinitions{
-		gentype.NewFakeClientWithListAndApply[*v2.TestStreamDefinition, *v2.TestStreamDefinitionList, *streamingv2.TestStreamDefinitionApplyConfiguration](
+func newFakeTestStreamDefinitionV2s(fake *FakeStreamingV2, namespace string) typedstreamingv2.TestStreamDefinitionV2Interface {
+	return &fakeTestStreamDefinitionV2s{
+		gentype.NewFakeClientWithListAndApply[*v2.TestStreamDefinitionV2, *v2.TestStreamDefinitionV2List, *streamingv2.TestStreamDefinitionV2ApplyConfiguration](
 			fake.Fake,
 			namespace,
-			v2.SchemeGroupVersion.WithResource("teststreamdefinitions"),
-			v2.SchemeGroupVersion.WithKind("TestStreamDefinition"),
-			func() *v2.TestStreamDefinition { return &v2.TestStreamDefinition{} },
-			func() *v2.TestStreamDefinitionList { return &v2.TestStreamDefinitionList{} },
-			func(dst, src *v2.TestStreamDefinitionList) { dst.ListMeta = src.ListMeta },
-			func(list *v2.TestStreamDefinitionList) []*v2.TestStreamDefinition {
+			v2.SchemeGroupVersion.WithResource("teststreamdefinitionv2s"),
+			v2.SchemeGroupVersion.WithKind("TestStreamDefinitionV2"),
+			func() *v2.TestStreamDefinitionV2 { return &v2.TestStreamDefinitionV2{} },
+			func() *v2.TestStreamDefinitionV2List { return &v2.TestStreamDefinitionV2List{} },
+			func(dst, src *v2.TestStreamDefinitionV2List) { dst.ListMeta = src.ListMeta },
+			func(list *v2.TestStreamDefinitionV2List) []*v2.TestStreamDefinitionV2 {
 				return gentype.ToPointerSlice(list.Items)
 			},
-			func(list *v2.TestStreamDefinitionList, items []*v2.TestStreamDefinition) {
+			func(list *v2.TestStreamDefinitionV2List, items []*v2.TestStreamDefinitionV2) {
 				list.Items = gentype.FromPointerSlice(items)
 			},
 		),

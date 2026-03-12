@@ -28,8 +28,8 @@ type FakeStreamingV2 struct {
 	*testing.Fake
 }
 
-func (c *FakeStreamingV2) TestStreamDefinitions(namespace string) v2.TestStreamDefinitionInterface {
-	return newFakeTestStreamDefinitions(c, namespace)
+func (c *FakeStreamingV2) TestStreamDefinitionV2s(namespace string) v2.TestStreamDefinitionV2Interface {
+	return newFakeTestStreamDefinitionV2s(c, namespace)
 }
 
 // RESTClient returns a RESTClient that is used to communicate

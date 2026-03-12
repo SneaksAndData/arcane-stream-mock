@@ -24,34 +24,34 @@ import (
 	v1 "k8s.io/client-go/applyconfigurations/meta/v1"
 )
 
-// TestStreamDefinitionApplyConfiguration represents a declarative configuration of the TestStreamDefinition type for use
+// TestStreamDefinitionV2ApplyConfiguration represents a declarative configuration of the TestStreamDefinitionV2 type for use
 // with apply.
 //
-// TestStreamDefinition is a mock implementation of the StreamDefinition for testing purposes.
-type TestStreamDefinitionApplyConfiguration struct {
+// TestStreamDefinitionV2 is a mock implementation of the StreamDefinition for testing purposes.
+type TestStreamDefinitionV2ApplyConfiguration struct {
 	v1.TypeMetaApplyConfiguration    `json:",inline"`
 	*v1.ObjectMetaApplyConfiguration `json:"metadata,omitempty"`
 	Spec                             *TestsStreamDefinitionSpecApplyConfiguration  `json:"spec,omitempty"`
 	Status                           *TestStreamDefinitionStatusApplyConfiguration `json:"status,omitempty"`
 }
 
-// TestStreamDefinition constructs a declarative configuration of the TestStreamDefinition type for use with
+// TestStreamDefinitionV2 constructs a declarative configuration of the TestStreamDefinitionV2 type for use with
 // apply.
-func TestStreamDefinition(name, namespace string) *TestStreamDefinitionApplyConfiguration {
-	b := &TestStreamDefinitionApplyConfiguration{}
+func TestStreamDefinitionV2(name, namespace string) *TestStreamDefinitionV2ApplyConfiguration {
+	b := &TestStreamDefinitionV2ApplyConfiguration{}
 	b.WithName(name)
 	b.WithNamespace(namespace)
-	b.WithKind("TestStreamDefinition")
+	b.WithKind("TestStreamDefinitionV2")
 	b.WithAPIVersion("streaming.sneaksanddata.com/v2")
 	return b
 }
 
-func (b TestStreamDefinitionApplyConfiguration) IsApplyConfiguration() {}
+func (b TestStreamDefinitionV2ApplyConfiguration) IsApplyConfiguration() {}
 
 // WithKind sets the Kind field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Kind field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithKind(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithKind(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.TypeMetaApplyConfiguration.Kind = &value
 	return b
 }
@@ -59,7 +59,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithKind(value string) *TestStr
 // WithAPIVersion sets the APIVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the APIVersion field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithAPIVersion(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithAPIVersion(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.TypeMetaApplyConfiguration.APIVersion = &value
 	return b
 }
@@ -67,7 +67,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithAPIVersion(value string) *T
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithName(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithName(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.Name = &value
 	return b
@@ -76,7 +76,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithName(value string) *TestStr
 // WithGenerateName sets the GenerateName field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the GenerateName field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithGenerateName(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithGenerateName(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.GenerateName = &value
 	return b
@@ -85,7 +85,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithGenerateName(value string) 
 // WithNamespace sets the Namespace field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Namespace field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithNamespace(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithNamespace(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.Namespace = &value
 	return b
@@ -94,7 +94,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithNamespace(value string) *Te
 // WithUID sets the UID field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the UID field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithUID(value types.UID) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithUID(value types.UID) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.UID = &value
 	return b
@@ -103,7 +103,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithUID(value types.UID) *TestS
 // WithResourceVersion sets the ResourceVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ResourceVersion field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithResourceVersion(value string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithResourceVersion(value string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.ResourceVersion = &value
 	return b
@@ -112,7 +112,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithResourceVersion(value strin
 // WithGeneration sets the Generation field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Generation field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithGeneration(value int64) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithGeneration(value int64) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.Generation = &value
 	return b
@@ -121,7 +121,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithGeneration(value int64) *Te
 // WithCreationTimestamp sets the CreationTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the CreationTimestamp field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithCreationTimestamp(value metav1.Time) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithCreationTimestamp(value metav1.Time) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.CreationTimestamp = &value
 	return b
@@ -130,7 +130,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithCreationTimestamp(value met
 // WithDeletionTimestamp sets the DeletionTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionTimestamp field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.DeletionTimestamp = &value
 	return b
@@ -139,7 +139,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithDeletionTimestamp(value met
 // WithDeletionGracePeriodSeconds sets the DeletionGracePeriodSeconds field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionGracePeriodSeconds field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithDeletionGracePeriodSeconds(value int64) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithDeletionGracePeriodSeconds(value int64) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ObjectMetaApplyConfiguration.DeletionGracePeriodSeconds = &value
 	return b
@@ -149,7 +149,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithDeletionGracePeriodSeconds(
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, the entries provided by each call will be put on the Labels field,
 // overwriting an existing map entries in Labels field with the same key.
-func (b *TestStreamDefinitionApplyConfiguration) WithLabels(entries map[string]string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithLabels(entries map[string]string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	if b.ObjectMetaApplyConfiguration.Labels == nil && len(entries) > 0 {
 		b.ObjectMetaApplyConfiguration.Labels = make(map[string]string, len(entries))
@@ -164,7 +164,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithLabels(entries map[string]s
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, the entries provided by each call will be put on the Annotations field,
 // overwriting an existing map entries in Annotations field with the same key.
-func (b *TestStreamDefinitionApplyConfiguration) WithAnnotations(entries map[string]string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithAnnotations(entries map[string]string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	if b.ObjectMetaApplyConfiguration.Annotations == nil && len(entries) > 0 {
 		b.ObjectMetaApplyConfiguration.Annotations = make(map[string]string, len(entries))
@@ -178,7 +178,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithAnnotations(entries map[str
 // WithOwnerReferences adds the given value to the OwnerReferences field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the OwnerReferences field.
-func (b *TestStreamDefinitionApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerReferenceApplyConfiguration) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerReferenceApplyConfiguration) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	for i := range values {
 		if values[i] == nil {
@@ -192,7 +192,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithOwnerReferences(values ...*
 // WithFinalizers adds the given value to the Finalizers field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Finalizers field.
-func (b *TestStreamDefinitionApplyConfiguration) WithFinalizers(values ...string) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithFinalizers(values ...string) *TestStreamDefinitionV2ApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	for i := range values {
 		b.ObjectMetaApplyConfiguration.Finalizers = append(b.ObjectMetaApplyConfiguration.Finalizers, values[i])
@@ -200,7 +200,7 @@ func (b *TestStreamDefinitionApplyConfiguration) WithFinalizers(values ...string
 	return b
 }
 
-func (b *TestStreamDefinitionApplyConfiguration) ensureObjectMetaApplyConfigurationExists() {
+func (b *TestStreamDefinitionV2ApplyConfiguration) ensureObjectMetaApplyConfigurationExists() {
 	if b.ObjectMetaApplyConfiguration == nil {
 		b.ObjectMetaApplyConfiguration = &v1.ObjectMetaApplyConfiguration{}
 	}
@@ -209,7 +209,7 @@ func (b *TestStreamDefinitionApplyConfiguration) ensureObjectMetaApplyConfigurat
 // WithSpec sets the Spec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Spec field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithSpec(value *TestsStreamDefinitionSpecApplyConfiguration) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithSpec(value *TestsStreamDefinitionSpecApplyConfiguration) *TestStreamDefinitionV2ApplyConfiguration {
 	b.Spec = value
 	return b
 }
@@ -217,29 +217,29 @@ func (b *TestStreamDefinitionApplyConfiguration) WithSpec(value *TestsStreamDefi
 // WithStatus sets the Status field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Status field is set to the value of the last call.
-func (b *TestStreamDefinitionApplyConfiguration) WithStatus(value *TestStreamDefinitionStatusApplyConfiguration) *TestStreamDefinitionApplyConfiguration {
+func (b *TestStreamDefinitionV2ApplyConfiguration) WithStatus(value *TestStreamDefinitionStatusApplyConfiguration) *TestStreamDefinitionV2ApplyConfiguration {
 	b.Status = value
 	return b
 }
 
 // GetKind retrieves the value of the Kind field in the declarative configuration.
-func (b *TestStreamDefinitionApplyConfiguration) GetKind() *string {
+func (b *TestStreamDefinitionV2ApplyConfiguration) GetKind() *string {
 	return b.TypeMetaApplyConfiguration.Kind
 }
 
 // GetAPIVersion retrieves the value of the APIVersion field in the declarative configuration.
-func (b *TestStreamDefinitionApplyConfiguration) GetAPIVersion() *string {
+func (b *TestStreamDefinitionV2ApplyConfiguration) GetAPIVersion() *string {
 	return b.TypeMetaApplyConfiguration.APIVersion
 }
 
 // GetName retrieves the value of the Name field in the declarative configuration.
-func (b *TestStreamDefinitionApplyConfiguration) GetName() *string {
+func (b *TestStreamDefinitionV2ApplyConfiguration) GetName() *string {
 	b.ensureObjectMetaApplyConfigurationExists()
 	return b.ObjectMetaApplyConfiguration.Name
 }
 
 // GetNamespace retrieves the value of the Namespace field in the declarative configuration.
-func (b *TestStreamDefinitionApplyConfiguration) GetNamespace() *string {
+func (b *TestStreamDefinitionV2ApplyConfiguration) GetNamespace() *string {
 	b.ensureObjectMetaApplyConfigurationExists()
 	return b.ObjectMetaApplyConfiguration.Namespace
 }

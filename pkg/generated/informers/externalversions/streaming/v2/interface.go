@@ -24,8 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// TestStreamDefinitions returns a TestStreamDefinitionInformer.
-	TestStreamDefinitions() TestStreamDefinitionInformer
+	// TestStreamDefinitionV2s returns a TestStreamDefinitionV2Informer.
+	TestStreamDefinitionV2s() TestStreamDefinitionV2Informer
 }
 
 type version struct {
@@ -39,7 +39,7 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// TestStreamDefinitions returns a TestStreamDefinitionInformer.
-func (v *version) TestStreamDefinitions() TestStreamDefinitionInformer {
-	return &testStreamDefinitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// TestStreamDefinitionV2s returns a TestStreamDefinitionV2Informer.
+func (v *version) TestStreamDefinitionV2s() TestStreamDefinitionV2Informer {
+	return &testStreamDefinitionV2Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

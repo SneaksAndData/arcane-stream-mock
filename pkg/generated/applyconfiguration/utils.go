@@ -52,10 +52,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &streamingv2.StreamingBackendApplyConfiguration{}
 	case v2.SchemeGroupVersion.WithKind("TestsStreamDefinitionSpec"):
 		return &streamingv2.TestsStreamDefinitionSpecApplyConfiguration{}
-	case v2.SchemeGroupVersion.WithKind("TestStreamDefinition"):
-		return &streamingv2.TestStreamDefinitionApplyConfiguration{}
 	case v2.SchemeGroupVersion.WithKind("TestStreamDefinitionStatus"):
 		return &streamingv2.TestStreamDefinitionStatusApplyConfiguration{}
+	case v2.SchemeGroupVersion.WithKind("TestStreamDefinitionV2"):
+		return &streamingv2.TestStreamDefinitionV2ApplyConfiguration{}
 
 	}
 	return nil

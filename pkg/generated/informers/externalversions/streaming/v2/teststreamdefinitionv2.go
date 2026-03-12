@@ -32,71 +32,71 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// TestStreamDefinitionInformer provides access to a shared informer and lister for
-// TestStreamDefinitions.
-type TestStreamDefinitionInformer interface {
+// TestStreamDefinitionV2Informer provides access to a shared informer and lister for
+// TestStreamDefinitionV2s.
+type TestStreamDefinitionV2Informer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() streamingv2.TestStreamDefinitionLister
+	Lister() streamingv2.TestStreamDefinitionV2Lister
 }
 
-type testStreamDefinitionInformer struct {
+type testStreamDefinitionV2Informer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewTestStreamDefinitionInformer constructs a new informer for TestStreamDefinition type.
+// NewTestStreamDefinitionV2Informer constructs a new informer for TestStreamDefinitionV2 type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewTestStreamDefinitionInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredTestStreamDefinitionInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewTestStreamDefinitionV2Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredTestStreamDefinitionV2Informer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredTestStreamDefinitionInformer constructs a new informer for TestStreamDefinition type.
+// NewFilteredTestStreamDefinitionV2Informer constructs a new informer for TestStreamDefinitionV2 type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredTestStreamDefinitionInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredTestStreamDefinitionV2Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.StreamingV2().TestStreamDefinitions(namespace).List(context.Background(), options)
+				return client.StreamingV2().TestStreamDefinitionV2s(namespace).List(context.Background(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.StreamingV2().TestStreamDefinitions(namespace).Watch(context.Background(), options)
+				return client.StreamingV2().TestStreamDefinitionV2s(namespace).Watch(context.Background(), options)
 			},
 			ListWithContextFunc: func(ctx context.Context, options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.StreamingV2().TestStreamDefinitions(namespace).List(ctx, options)
+				return client.StreamingV2().TestStreamDefinitionV2s(namespace).List(ctx, options)
 			},
 			WatchFuncWithContext: func(ctx context.Context, options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.StreamingV2().TestStreamDefinitions(namespace).Watch(ctx, options)
+				return client.StreamingV2().TestStreamDefinitionV2s(namespace).Watch(ctx, options)
 			},
 		}, client),
-		&apisstreamingv2.TestStreamDefinition{},
+		&apisstreamingv2.TestStreamDefinitionV2{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *testStreamDefinitionInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredTestStreamDefinitionInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *testStreamDefinitionV2Informer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredTestStreamDefinitionV2Informer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *testStreamDefinitionInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&apisstreamingv2.TestStreamDefinition{}, f.defaultInformer)
+func (f *testStreamDefinitionV2Informer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&apisstreamingv2.TestStreamDefinitionV2{}, f.defaultInformer)
 }
 
-func (f *testStreamDefinitionInformer) Lister() streamingv2.TestStreamDefinitionLister {
-	return streamingv2.NewTestStreamDefinitionLister(f.Informer().GetIndexer())
+func (f *testStreamDefinitionV2Informer) Lister() streamingv2.TestStreamDefinitionV2Lister {
+	return streamingv2.NewTestStreamDefinitionV2Lister(f.Informer().GetIndexer())
 }
