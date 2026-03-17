@@ -24,7 +24,7 @@ package v2
 // StreamingBackend represents the backend configuration for streaming, including both real-time and batch processing options.
 type StreamingBackendApplyConfiguration struct {
 	// BatchJobBackend represents the backend configuration for real-time streaming.
-	BatchJobBackend *BatchJobBackendApplyConfiguration `json:"realtime,omitempty"`
+	BatchJobBackend *BatchJobBackendApplyConfiguration `json:"changeCapture,omitempty"`
 	// CronJobBackend represents the backend configuration for batch processing.
 	CronJobBackend *CronJobBackendApplyConfiguration `json:"batch,omitempty"`
 }
