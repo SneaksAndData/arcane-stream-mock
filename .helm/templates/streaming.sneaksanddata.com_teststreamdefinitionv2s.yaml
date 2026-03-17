@@ -172,7 +172,7 @@ spec:
                         - jobTemplateRef
                         - schedule
                         type: object
-                      realtime:
+                      changeCapture:
                         description: BatchJobBackend represents the backend configuration
                           for real-time streaming.
                         properties:
