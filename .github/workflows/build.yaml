@@ -24,7 +24,7 @@ jobs:
         with:
           go-version: '1.24.*'
 
-      - uses: extractions/setup-just@v3
+      - uses: extractions/setup-just@v4
 
       - name: Check Format
         if: false # Temporarily disabled
