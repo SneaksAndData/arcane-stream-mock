@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/SneaksAndData/arcane-stream-mock/pkg/signals"
 	"math/rand/v2"
 	"os"
 	"time"
+
+	"github.com/SneaksAndData/arcane-stream-mock/pkg/signals"
 
 	"github.com/SneaksAndData/arcane-stream-mock/pkg/apis/streaming/v1"
 )
@@ -50,6 +51,13 @@ func main() {
 		fmt.Printf("Simulating failure after %v\n", randomFailureDuration)
 		time.Sleep(randomFailureDuration)
 		panic("Simulated failure as per ShouldFail=true")
+	}
+
+	backfillId := os.Getenv("STREAMCONTEXT__BACKFILL_ID")
+	if backfillId == "" {
+		fmt.Println("STREAMCONTEXT__BACKFILL_ID environment variable is not defined")
+	} else {
+		fmt.Printf("Running backfill with ID: %s\n", backfillId)
 	}
 
 	fmt.Printf("Running stream for %v\n", duration)
