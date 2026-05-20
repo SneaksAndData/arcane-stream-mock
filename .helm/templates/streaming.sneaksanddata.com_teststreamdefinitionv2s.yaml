@@ -64,10 +64,6 @@ spec:
                 description: ExecutionSettings represents the execution settings for
                   the stream.
                 properties:
-                  apiVersion:
-                    description: APIVersion represents the API version of the execution
-                      settings.
-                    type: string
                   backfillJobTemplateRef:
                     description: BackfillJobTemplateRef represents a reference to
                       the job template.
@@ -112,6 +108,10 @@ spec:
                         type: string
                     type: object
                     x-kubernetes-map-type: atomic
+                  layoutVersion:
+                    description: LayoutVersion represents the layout version of the
+                      execution settings.
+                    type: string
                   streamingBackend:
                     description: StreamingBackend represents the backend configuration
                       for streaming.
@@ -233,8 +233,8 @@ spec:
                     description: Suspended indicates whether the stream is suspended.
                     type: boolean
                 required:
-                - apiVersion
                 - backfillJobTemplateRef
+                - layoutVersion
                 - streamingBackend
                 - suspended
                 type: object
