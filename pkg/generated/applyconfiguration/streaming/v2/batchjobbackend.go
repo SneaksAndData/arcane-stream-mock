@@ -28,8 +28,6 @@ import (
 // BatchJobBackend represents the backend configuration for real-time streaming, including the change capture interval
 // and a reference to the job template.
 type BatchJobBackendApplyConfiguration struct {
-	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
-	ChangeCaptureInterval *string `json:"changeCaptureInterval,omitempty"`
 	// JobTemplateRef represents a reference to the job template.
 	JobTemplateRef *v1.ObjectReference `json:"jobTemplateRef,omitempty"`
 }
@@ -38,14 +36,6 @@ type BatchJobBackendApplyConfiguration struct {
 // apply.
 func BatchJobBackend() *BatchJobBackendApplyConfiguration {
 	return &BatchJobBackendApplyConfiguration{}
-}
-
-// WithChangeCaptureInterval sets the ChangeCaptureInterval field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the ChangeCaptureInterval field is set to the value of the last call.
-func (b *BatchJobBackendApplyConfiguration) WithChangeCaptureInterval(value string) *BatchJobBackendApplyConfiguration {
-	b.ChangeCaptureInterval = &value
-	return b
 }
 
 // WithJobTemplateRef sets the JobTemplateRef field in the declarative configuration to the given value
