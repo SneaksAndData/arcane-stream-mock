@@ -251,9 +251,6 @@ spec:
               source:
                 description: Source represents the source of the stream.
                 type: string
-              suspended:
-                description: Suspended indicates whether the stream is suspended.
-                type: boolean
               testSecretRef:
                 description: TestSecretRef represents a reference to a secret for
                   testing purposes.
@@ -275,7 +272,6 @@ spec:
             - runDuration
             - shouldFail
             - source
-            - suspended
             type: object
           status:
             properties:
