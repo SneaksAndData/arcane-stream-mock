@@ -55,9 +55,6 @@ type TestsStreamDefinitionSpec struct {
 	// Destination represents the destination of the stream.
 	Destination string `json:"destination"`
 
-	// Suspended indicates whether the stream is suspended.
-	Suspended bool `json:"suspended"`
-
 	// RunDuration represents the duration for which the stream should run.
 	// +kubebuilder:default="15s"
 	RunDuration string `json:"runDuration"`

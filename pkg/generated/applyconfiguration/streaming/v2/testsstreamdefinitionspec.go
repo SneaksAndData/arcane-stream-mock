@@ -31,8 +31,6 @@ type TestsStreamDefinitionSpecApplyConfiguration struct {
 	Source *string `json:"source,omitempty"`
 	// Destination represents the destination of the stream.
 	Destination *string `json:"destination,omitempty"`
-	// Suspended indicates whether the stream is suspended.
-	Suspended *bool `json:"suspended,omitempty"`
 	// RunDuration represents the duration for which the stream should run.
 	RunDuration *string `json:"runDuration,omitempty"`
 	// ShouldFail indicates whether the stream should simulate a failure.
@@ -64,14 +62,6 @@ func (b *TestsStreamDefinitionSpecApplyConfiguration) WithSource(value string) *
 // If called multiple times, the Destination field is set to the value of the last call.
 func (b *TestsStreamDefinitionSpecApplyConfiguration) WithDestination(value string) *TestsStreamDefinitionSpecApplyConfiguration {
 	b.Destination = &value
-	return b
-}
-
-// WithSuspended sets the Suspended field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Suspended field is set to the value of the last call.
-func (b *TestsStreamDefinitionSpecApplyConfiguration) WithSuspended(value bool) *TestsStreamDefinitionSpecApplyConfiguration {
-	b.Suspended = &value
 	return b
 }
 
