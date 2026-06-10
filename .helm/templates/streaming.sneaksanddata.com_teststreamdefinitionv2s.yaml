@@ -57,6 +57,10 @@ spec:
             description: TestsStreamDefinitionSpec is a mock implementation of the
               StreamDefinitionSpec for testing purposes.
             properties:
+              changeCaptureInterval:
+                description: ChangeCaptureInterval represents the interval at which
+                  changes are captured for real-time processing.
+                type: string
               destination:
                 description: Destination represents the destination of the stream.
                 type: string
@@ -176,10 +180,6 @@ spec:
                         description: BatchJobBackend represents the backend configuration
                           for real-time streaming.
                         properties:
-                          changeCaptureInterval:
-                            description: ChangeCaptureInterval represents the interval
-                              at which changes are captured for real-time processing.
-                            type: string
                           jobTemplateRef:
                             description: JobTemplateRef represents a reference to
                               the job template.
@@ -225,7 +225,6 @@ spec:
                             type: object
                             x-kubernetes-map-type: atomic
                         required:
-                        - changeCaptureInterval
                         - jobTemplateRef
                         type: object
                     type: object
@@ -267,6 +266,7 @@ spec:
                 type: object
                 x-kubernetes-map-type: atomic
             required:
+            - changeCaptureInterval
             - destination
             - execution
             - runDuration

@@ -19,9 +19,6 @@ type CronJobBackend struct {
 // BatchJobBackend represents the backend configuration for real-time streaming, including the change capture interval
 // and a reference to the job template.
 type BatchJobBackend struct {
-	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
-	ChangeCaptureInterval string `json:"changeCaptureInterval"`
-
 	// JobTemplateRef represents a reference to the job template.
 	JobTemplateRef v1.ObjectReference `json:"jobTemplateRef"`
 }
@@ -71,6 +68,9 @@ type TestsStreamDefinitionSpec struct {
 
 	// ExecutionSettings represents the execution settings for the stream.
 	ExecutionSettings ExecutionSettings `json:"execution"`
+
+	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
+	ChangeCaptureInterval string `json:"changeCaptureInterval"`
 }
 
 type TestStreamDefinitionStatus struct {
