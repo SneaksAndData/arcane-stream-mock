@@ -23,5 +23,7 @@ rules:
         - streaming.sneaksanddata.com
       resources:
         - teststreamdefinitions
+        - teststreamdefinitionv2s
+        - teststreamdefinitionv2s/status
         - teststreamdefinitions/status
 {{- end }}
