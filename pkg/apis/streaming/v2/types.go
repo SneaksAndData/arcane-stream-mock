@@ -8,7 +8,6 @@ import (
 // CronJobBackend represents the backend configuration for batch processing, including the cron schedule and a reference
 // to the job template.
 type CronJobBackend struct {
-
 	// Schedule represents the cron schedule for batch processing.
 	Schedule string `json:"schedule"`
 
@@ -21,6 +20,9 @@ type CronJobBackend struct {
 type BatchJobBackend struct {
 	// JobTemplateRef represents a reference to the job template.
 	JobTemplateRef v1.ObjectReference `json:"jobTemplateRef"`
+
+	// BackfillJobTemplateRef represents a reference to the job template.
+	BackfillJobTemplateRef *v1.ObjectReference `json:"backfillJobTemplateRef,omitempty"`
 }
 
 // StreamingBackend represents the backend configuration for streaming, including both real-time and batch processing options.
@@ -41,7 +43,7 @@ type ExecutionSettings struct {
 	Suspended bool `json:"suspended"`
 
 	// BackfillJobTemplateRef represents a reference to the job template.
-	BackfillJobTemplateRef v1.ObjectReference `json:"backfillJobTemplateRef"`
+	BackfillJobTemplateRef *v1.ObjectReference `json:"backfillJobTemplateRef,omitempty"`
 
 	// StreamingBackend represents the backend configuration for streaming.
 	StreamingBackend StreamingBackend `json:"streamingBackend"`
@@ -68,9 +70,6 @@ type TestsStreamDefinitionSpec struct {
 
 	// ExecutionSettings represents the execution settings for the stream.
 	ExecutionSettings ExecutionSettings `json:"execution"`
-
-	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
-	ChangeCaptureInterval string `json:"changeCaptureInterval"`
 }
 
 type TestStreamDefinitionStatus struct {
