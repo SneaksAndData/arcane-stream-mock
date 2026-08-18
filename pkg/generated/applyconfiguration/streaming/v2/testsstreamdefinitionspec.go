@@ -39,8 +39,6 @@ type TestsStreamDefinitionSpecApplyConfiguration struct {
 	TestSecretRef *v1.LocalObjectReference `json:"testSecretRef,omitempty"`
 	// ExecutionSettings represents the execution settings for the stream.
 	ExecutionSettings *ExecutionSettingsApplyConfiguration `json:"execution,omitempty"`
-	// ChangeCaptureInterval represents the interval at which changes are captured for real-time processing.
-	ChangeCaptureInterval *string `json:"changeCaptureInterval,omitempty"`
 }
 
 // TestsStreamDefinitionSpecApplyConfiguration constructs a declarative configuration of the TestsStreamDefinitionSpec type for use with
@@ -94,13 +92,5 @@ func (b *TestsStreamDefinitionSpecApplyConfiguration) WithTestSecretRef(value v1
 // If called multiple times, the ExecutionSettings field is set to the value of the last call.
 func (b *TestsStreamDefinitionSpecApplyConfiguration) WithExecutionSettings(value *ExecutionSettingsApplyConfiguration) *TestsStreamDefinitionSpecApplyConfiguration {
 	b.ExecutionSettings = value
-	return b
-}
-
-// WithChangeCaptureInterval sets the ChangeCaptureInterval field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the ChangeCaptureInterval field is set to the value of the last call.
-func (b *TestsStreamDefinitionSpecApplyConfiguration) WithChangeCaptureInterval(value string) *TestsStreamDefinitionSpecApplyConfiguration {
-	b.ChangeCaptureInterval = &value
 	return b
 }

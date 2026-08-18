@@ -30,6 +30,8 @@ import (
 type BatchJobBackendApplyConfiguration struct {
 	// JobTemplateRef represents a reference to the job template.
 	JobTemplateRef *v1.ObjectReference `json:"jobTemplateRef,omitempty"`
+	// BackfillJobTemplateRef represents a reference to the job template.
+	BackfillJobTemplateRef *v1.ObjectReference `json:"backfillJobTemplateRef,omitempty"`
 }
 
 // BatchJobBackendApplyConfiguration constructs a declarative configuration of the BatchJobBackend type for use with
@@ -43,5 +45,13 @@ func BatchJobBackend() *BatchJobBackendApplyConfiguration {
 // If called multiple times, the JobTemplateRef field is set to the value of the last call.
 func (b *BatchJobBackendApplyConfiguration) WithJobTemplateRef(value v1.ObjectReference) *BatchJobBackendApplyConfiguration {
 	b.JobTemplateRef = &value
+	return b
+}
+
+// WithBackfillJobTemplateRef sets the BackfillJobTemplateRef field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the BackfillJobTemplateRef field is set to the value of the last call.
+func (b *BatchJobBackendApplyConfiguration) WithBackfillJobTemplateRef(value v1.ObjectReference) *BatchJobBackendApplyConfiguration {
+	b.BackfillJobTemplateRef = &value
 	return b
 }
