@@ -16,3 +16,5 @@ spec:
   pluralName: teststreamdefinitionv2s
   secretRefs:
     - testSecretRef
+  overridableFields:
+    - .spec.shouldFail

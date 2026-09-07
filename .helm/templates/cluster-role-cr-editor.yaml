@@ -24,4 +24,6 @@ rules:
       resources:
         - teststreamdefinitions
         - teststreamdefinitions/status
+        - teststreamdefinitionv2s
+        - teststreamdefinitionv2s/status
 {{- end }}
