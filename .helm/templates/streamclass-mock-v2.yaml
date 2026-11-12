@@ -16,3 +16,8 @@ spec:
   pluralName: teststreamdefinitionv2s
   secretRefs:
     - testSecretRef
+  overridableFields:
+    - .spec.shouldFail
+
+    # Not used by mock, but used by integration tests to verify that overrides are applied correctly
+    - .spec.backfillBehavior
